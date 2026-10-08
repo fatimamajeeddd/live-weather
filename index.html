@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+ <body>
+  <div id="rain"></div>
+  <div id="sky"></div>
 
   <div class="wrap">
     <header>
@@ -14,10 +17,10 @@
       <p>Search any city for live weather.</p>
     </header>
 
-    <form id="searchForm">
-      <input type="text" id="cityInput" placeholder="Search a city, e.g. Lahore" required>
-      <button type="submit">Search</button>
-    </form>
+    <form id="searchForm" autocomplete="off" action="javascript:void(0);">
+  <input type="text" id="cityInput" name="city_search" placeholder="Search a city, e.g. Lahore" required>
+  <button type="submit">Search</button>
+</form>
 
     <p class="status" id="status"></p>
 
@@ -30,4 +33,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

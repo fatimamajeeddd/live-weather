@@ -17,16 +17,26 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  transition: background 1s ease;
 }
 
 .wrap {
   max-width: 420px;
   width: 100%;
   background-color: #131C2E;
+  color: #EAF2FF;
   border: 1px solid #223052;
   border-radius: 16px;
   padding: 40px 32px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
 header {
@@ -129,4 +139,99 @@ header p {
   color: #5B9DFF;
   margin-top: 6px;
   font-size: 0.95rem;
+}
+
+/* Mausam ke moods (background) */
+body.sunny  { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
+body.night  { background: linear-gradient(135deg, #141e30, #243b55); color: #fff; }
+body.cloudy { background: linear-gradient(135deg, #8e9eab, #eef2f3); color: #222; }
+body.rainy  { background: linear-gradient(135deg, #283048, #4b79a1); color: #fff; }
+body.snowy  { background: linear-gradient(135deg, #7f9cc7, #c9d6ee); color: #222; }
+
+/* Baarish */
+#rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.drop {
+  position: absolute;
+  top: -20px;
+  width: 3px;
+  height: 25px;
+  background: linear-gradient(transparent, #cfe8ff);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* Suraj, badal aur barf */
+#sky {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sun {
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7c2, #ffd93b);
+  box-shadow: 0 0 80px 30px rgba(255, 217, 59, 0.6);
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.cloud {
+  position: absolute;
+  left: 0;
+  width: 120px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 100px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  animation: drift linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+}
+
+.cloud::before { width: 50px; height: 50px; top: -25px; left: 20px; }
+.cloud::after  { width: 65px; height: 65px; top: -35px; left: 55px; }
+
+@keyframes drift {
+  from { transform: translateX(-250px); }
+  to   { transform: translateX(110vw); }
+}
+
+.flake {
+  position: absolute;
+  top: -20px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.85;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  to { transform: translateY(110vh) translateX(40px); }
 }
